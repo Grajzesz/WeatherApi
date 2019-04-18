@@ -1,0 +1,13 @@
+.formularz{
+  margin: 0 auto;
+  max-width: 1024px;
+  display: flex;
+  justify-content: center;
+}
+.content{
+  margin-top: 10%;
+  width: 100%;
+}
+.content div{
+  padding: 5px;
+}

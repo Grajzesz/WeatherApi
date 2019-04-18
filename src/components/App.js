@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import Form from './Form';
 import Result from './Result';
 const ApiKey = '3f5adde1534ce63dfb72e3180a717319';
@@ -12,6 +13,7 @@ class App extends Component {
         temp: '',
         pressure: '',
         wind: '',
+        icon:"",
         err: false
     };
 
@@ -51,7 +53,11 @@ class App extends Component {
                     temp: data.main.temp,
                     pressure: data.main.pressure,
                     wind: data.wind.speed,
-                    city: prevState.value
+                    windDeg: data.wind.deg,
+                    icon: data.weather[0].icon,
+                    city: prevState.value,
+                    temp_max: data.main.temp_max,
+                    temp_min: data.main.temp_min
                 }));
             })
             .catch(
