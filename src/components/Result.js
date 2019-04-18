@@ -15,6 +15,11 @@ const Result = props => {
         temp_max,
         temp_min
     } = props.weather;
+
+//    var myStyle = {
+//         transform: rotate(90deg)
+//     }
+
     let iconset = `http://openweathermap.org/img/w/${icon}.png`;
     let content = null;
     if (!err && city) {
@@ -32,7 +37,7 @@ const Result = props => {
                 <div>Wschód słońca: {sunriseTime}</div>
                 <div>Zachód słońca: {sunsetTime}</div>
                 <div>
-                    Wiatr: {wind} m/s {windDeg}
+                    Wiatr: {wind} m/s {windDeg}<i className="fas fa-location-arrow" style={{transform: 'rotate({windDeg}deg)'}}></i>
                 </div>
                 <div>Ciśnienie: {pressure} hPa</div>
                 <div>

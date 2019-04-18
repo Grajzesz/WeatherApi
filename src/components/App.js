@@ -14,7 +14,9 @@ class App extends Component {
         pressure: '',
         wind: '',
         icon:"",
-        err: false
+        err: false,
+        recentInfo: [],
+            allTimeInfo: []
     };
 
     handleTextChange = e => {
@@ -30,44 +32,115 @@ class App extends Component {
             this.state.value
         }&APPID=${ApiKey}&units=metric`;
 
-        fetch(Api)
-            .then(response => {
-                if (response.ok) {
-                    return response;
-                }
-                throw Error('lipa');
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
+        const ApiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${
+            this.state.value
+        }&APPID=${ApiKey}&units=metric`;
 
-                const time = new Date().toLocaleString();
+
+
+        Promise.all([
+            fetch(Api).then(response => response.json()),
+            fetch(ApiForecast).then(response => response.json())
+            ])
+            .then((response) => {
+                console.log(response);
+                if(response.ok){
+
+
+                    return response
+                }
+
+
+                   const time = new Date().toLocaleString();
 
                 this.setState(prevState => ({
                     err: false,
 
                     date: time,
 
-                    sunrise: data.sys.sunrise,
-                    sunset: data.sys.sunset,
-                    temp: data.main.temp,
-                    pressure: data.main.pressure,
-                    wind: data.wind.speed,
-                    windDeg: data.wind.deg,
-                    icon: data.weather[0].icon,
+                    sunrise: response[0].sys.sunrise,
+                    sunset: response[0].sys.sunset,
+                    temp: response[1].list[0].main.temp,
+                    pressure: response[1].list[0].main.pressure,
+                    wind: response[1].list[0].wind.speed,
+                    windDeg: response[1].list[0].wind.deg,
+                    icon: response[1].list[0].weather[0].icon,
                     city: prevState.value,
-                    temp_max: data.main.temp_max,
-                    temp_min: data.main.temp_min
+                    temp_max: response[1].list[0].main.temp_max,
+                    temp_min: response[1].list[0].main.temp_min
                 }));
             })
-            .catch(
-                err => console.log(err),
-                this.setState(prevState => ({
-                    err: true,
-                    city: prevState.value
-                }))
-            );
-    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+        // fetch(Api)
+        // fetch(ApiForecast)
+        //     .then(response => {
+
+        //         if (response.ok) {
+        //             return response
+
+
+        //         }
+        //         throw Error('lipa');
+        //     })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log(data);
+
+            //     const time = new Date().toLocaleString();
+
+            //     this.setState(prevState => ({
+            //         err: false,
+
+            //         date: time,
+
+            //         sunrise: data.list[0].sys.sunrise,
+            //         sunset: data.list[0].sys.sunset,
+            //         temp: data.list[0].main.temp,
+            //         pressure: data.list[0].main.pressure,
+            //         wind: data.list[0].wind.speed,
+            //         windDeg: data.list[0].wind.deg,
+            //         icon: data.list[0].weather[0].icon,
+            //         city: prevState.value,
+            //         temp_max: data.list[0].main.temp_max,
+            //         temp_min: data.list[0].main.temp_min
+            //     }));
+            // })
+            // .catch(
+            //     err => console.log(err),
+            //     this.setState(prevState => ({
+            //         err: true,
+            //         city: prevState.value
+            //     }))
+            // );
+
+
+
+
+
+
+
     render() {
         return (
             <div>
