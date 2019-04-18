@@ -1,13 +1,26 @@
-.formularz{
-  margin: 0 auto;
-  max-width: 1024px;
-  display: flex;
-  justify-content: center;
+.formularz {
+    margin: 0 auto;
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
 }
-.content{
-  margin-top: 10%;
-  width: 100%;
+
+.content {
+    margin-top: 10%;
+    width: 100%;
 }
-.content div{
-  padding: 5px;
+
+.content div {
+    padding: 5px;
+}
+
+.content .today__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+.today {
+    padding: 0 50px;
 }
