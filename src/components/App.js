@@ -38,10 +38,10 @@ class App extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                
-                const time =new Date().toLocaleString()
 
-                this.setState({
+                const time = new Date().toLocaleString();
+
+                this.setState(prevState => ({
                     err: false,
 
                     date: time,
@@ -49,16 +49,17 @@ class App extends Component {
                     sunrise: data.sys.sunrise,
                     sunset: data.sys.sunset,
                     temp: data.main.temp,
-                    pressure: '',
-                    wind: ''
-
-                });
+                    pressure: data.main.pressure,
+                    wind: data.wind.speed,
+                    city: prevState.value
+                }));
             })
             .catch(
                 err => console.log(err),
-                this.setState({
-                    err: true
-                })
+                this.setState(prevState => ({
+                    err: true,
+                    city: prevState.value
+                }))
             );
     };
     render() {
@@ -69,7 +70,7 @@ class App extends Component {
                     change={this.handleTextChange}
                     submit={this.handleCitySubmit}
                 />
-                <Result error = {this.state.err}/>
+                <Result weather={this.state} />
             </div>
         );
     }
