@@ -13,6 +13,9 @@
 .content div {
     padding: 5px;
 }
+.content img{
+    justify-content: center;
+}
 
 .content .today__container {
     display: flex;
@@ -23,4 +26,14 @@
 
 .today {
     padding: 0 50px;
+}
+.next__days{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.icon__container{
+    display: flex;
+    justify-content: center;
 }

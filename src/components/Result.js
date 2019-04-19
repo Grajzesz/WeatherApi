@@ -77,10 +77,11 @@ const Result = props => {
                     </div>
                     <div>Ciśnienie: {pressure} hPa</div>
 
-                </div> <div>
+                </div> <div className="icon__container">
                         <img src={iconset} alt="djis" />
                     </div></div>
                 {/* tomorrow */}
+                <div className="next__days">
                 <div className="tomorrow">
                     <div>Na dzień: {tomorrow_date}</div>
                     <div>temperatura: {tomorrow_temp} &#176;C</div>
@@ -95,7 +96,7 @@ const Result = props => {
                         />
                     </div>
                     <div>Ciśnienie: {tomorrow_pressure} hPa</div>
-                    <div>
+                    <div className="icon__container">
                         <img src={tomorrow_iconset} alt="djis" />
                     </div>
                 </div>
@@ -114,7 +115,7 @@ const Result = props => {
                         />
                     </div>
                     <div>Ciśnienie: {afterTomorrow_pressure} hPa</div>
-                    <div>
+                    <div className="icon__container">
                         <img src={afterTomorrow_iconset} alt="djis" />
                     </div>
                 </div>
@@ -133,9 +134,10 @@ const Result = props => {
                         />
                     </div>
                     <div>Ciśnienie: {dayAfterTomorrow_pressure} hPa</div>
-                    <div>
+                    <div className="icon__container">
                         <img src={dayAfterTomorrow_iconset} alt="djis" />
                     </div>
+                </div>
                 </div>
             </div>
         );
