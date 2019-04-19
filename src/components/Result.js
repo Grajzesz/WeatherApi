@@ -95,7 +95,7 @@ const Result = props => {
                         Wiatr: {wind} m/s{' '}
                         <i
                             className="fas fa-location-arrow"
-                            style={{ transform: `rotate(${windDeg - 43}deg)` }}
+                            style={{ transform: `rotate(${windDeg - 223}deg)` }}
                         />
                     </div>
                     <div>Ciśnienie: {pressure} hPa</div>
@@ -154,7 +154,7 @@ const Result = props => {
                                 className="fas fa-location-arrow"
                                 style={{
                                     transform: `rotate(${tomorrow_windDeg -
-                                        43}deg)`
+                                        223}deg)`
                                 }}
                             />
                         </div>
@@ -174,7 +174,7 @@ const Result = props => {
                                 className="fas fa-location-arrow"
                                 style={{
                                     transform: `rotate(${afterTomorrow_windDeg -
-                                        43}deg)`
+                                        223}deg)`
                                 }}
                             />
                         </div>
@@ -194,7 +194,7 @@ const Result = props => {
                                 className="fas fa-location-arrow"
                                 style={{
                                     transform: `rotate(${dayAfterTomorrow_windDeg -
-                                        43}deg)`
+                                        223}deg)`
                                 }}
                             />
                         </div>
