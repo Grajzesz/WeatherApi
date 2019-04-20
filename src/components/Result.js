@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Background__brokenClouds from '../img/sky-landscape-nature-clouds-wallpaper-preview.jpg';
+import Background__sun from '../img/KFHJzV.jpg';
 const Result = props => {
     const {
         err,
-
+        desc,
         city,
         temp,
         date,
@@ -55,9 +56,29 @@ const Result = props => {
         dayAfterTomorrow_windDeg,
         dayAfterTomorrow_icon
     } = props.weather;
-    // var timer = time;
-    // let hour = timer.slice(11, 16);
-    // console.log(hour + 3);
+ console.log(icon);
+
+function bckgChange(){
+    let bckg
+    if(icon === "01d"){
+        bckg=Background__sun
+    }else if(icon === "04d"){
+        bckg=Background__brokenClouds
+    }
+    return bckg
+}
+
+    var sectionStyle = {
+      width: "100%",
+      height: "100%",
+      backgroundImage: `url(${bckgChange()})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+
+      textAlign: "center"
+
+
+    };
 
     function hoursSet(n) {
         var dt = new Date();
@@ -80,6 +101,7 @@ const Result = props => {
         content = (
             <div className="content">
                 <div className="today__container">
+                <div className="today__back" style={ sectionStyle }>
                     <div>
                         <h3>Wyszukiwanie dla miasta {city}</h3>
                     </div>
@@ -88,7 +110,7 @@ const Result = props => {
                         temperatura: {temp} &#176;C od {temp_min} &#176;C do{' '}
                         {temp_max} &#176;C
                     </div>
-
+                    <div>{desc}</div>
                     <div>Wschód słońca: {sunriseTime}</div>
                     <div>Zachód słońca: {sunsetTime}</div>
                     <div>
@@ -102,7 +124,7 @@ const Result = props => {
 
                     <div className="icon__container">
                         <img src={iconset} alt="djis" />
-                    </div>
+                    </div></div>
                     <div className="later__today">
                         <div className="later__today-hours1 align-items">
                             <div className="hours">{hoursSet(3)}</div>&nbsp;
@@ -137,7 +159,7 @@ const Result = props => {
                         <div className="later__today-hours7 align-items">
                             <div className="hours">{hoursSet(21)}</div>&nbsp;
                             {temp7} &#176;C
-                            <img src={icona(icon7)} alt="djis" />
+                            <img src={icona(icon7)} alt="djis"/>
                         </div>
                     </div>
                 </div>

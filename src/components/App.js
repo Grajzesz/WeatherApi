@@ -5,6 +5,7 @@ import Result from './Result';
 const ApiKey = '3f5adde1534ce63dfb72e3180a717319';
 class App extends Component {
     state = {
+        desc:"",
         value: '',
         date: '',
         city: '',
@@ -74,11 +75,11 @@ icon7: '',
 
         const Api = `https://api.openweathermap.org/data/2.5/weather?q=${
             this.state.value
-        }&APPID=${ApiKey}&units=metric`;
+        }&APPID=${ApiKey}&lang=pl&units=metric`;
 
         const ApiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${
             this.state.value
-        }&APPID=${ApiKey}&units=metric`;
+        }&APPID=${ApiKey}&lang=pl&units=metric`;
 
         Promise.all([
             fetch(Api).then(response => response.json()),
@@ -94,7 +95,7 @@ icon7: '',
 
                 this.setState(prevState => ({
                     err: false,
-
+                    desc: response[0].weather[0].description,
                     date: time,
 
                     sunrise: response[0].sys.sunrise,
@@ -111,7 +112,7 @@ icon7: '',
                     pressure: response[1].list[0].main.pressure,
                     wind: response[1].list[0].wind.speed,
                     windDeg: response[1].list[0].wind.deg,
-                    icon: response[1].list[0].weather[0].icon,
+                    icon: response[0].weather[0].icon,
                     icon1: response[1].list[1].weather[0].icon,
                     icon2: response[1].list[2].weather[0].icon,
                     icon3: response[1].list[3].weather[0].icon,
@@ -124,31 +125,31 @@ icon7: '',
                     temp_min: response[1].list[0].main.temp_min,
                     // tomorrow
 
-                    tomorrow_date: response[1].list[5].dt_txt,
+                    tomorrow_date: response[1].list[8].dt_txt,
 
-                    tomorrow_temp: response[1].list[5].main.temp,
+                    tomorrow_temp: response[1].list[8].main.temp,
 
-                    tomorrow_pressure: response[1].list[5].main.pressure,
-                    tomorrow_wind: response[1].list[5].wind.speed,
-                    tomorrow_icon: response[1].list[5].weather[0].icon,
-                    tomorrow_windDeg: response[1].list[5].wind.deg,
+                    tomorrow_pressure: response[1].list[8].main.pressure,
+                    tomorrow_wind: response[1].list[8].wind.speed,
+                    tomorrow_icon: response[1].list[8].weather[0].icon,
+                    tomorrow_windDeg: response[1].list[8].wind.deg,
                     // aftertomorrow
 
-                    afterTomorrow_date: response[1].list[13].dt_txt,
-                    afterTomorrow_windDeg: response[1].list[13].wind.deg,
-                    afterTomorrow_temp: response[1].list[13].main.temp,
-                    afterTomorrow_pressure: response[1].list[13].main.pressure,
-                    afterTomorrow_wind: response[1].list[13].wind.speed,
-                    afterTomorrow_icon: response[1].list[13].weather[0].icon,
+                    afterTomorrow_date: response[1].list[16].dt_txt,
+                    afterTomorrow_windDeg: response[1].list[16].wind.deg,
+                    afterTomorrow_temp: response[1].list[16].main.temp,
+                    afterTomorrow_pressure: response[1].list[16].main.pressure,
+                    afterTomorrow_wind: response[1].list[16].wind.speed,
+                    afterTomorrow_icon: response[1].list[16].weather[0].icon,
                     //afteraftertomorrow
 
-                    dayAfterTomorrow_date: response[1].list[21].dt_txt,
-                    dayAfterTomorrow_windDeg: response[1].list[21].wind.deg,
-                    dayAfterTomorrow_temp: response[1].list[21].main.temp,
-                    dayAfterTomorrow_pressure:(response[1].list[21].main.pressure),
+                    dayAfterTomorrow_date: response[1].list[24].dt_txt,
+                    dayAfterTomorrow_windDeg: response[1].list[24].wind.deg,
+                    dayAfterTomorrow_temp: response[1].list[24].main.temp,
+                    dayAfterTomorrow_pressure:(response[1].list[24].main.pressure),
 
-                    dayAfterTomorrow_wind: response[1].list[21].wind.speed,
-                    dayAfterTomorrow_icon: response[1].list[21].weather[0].icon
+                    dayAfterTomorrow_wind: response[1].list[24].wind.speed,
+                    dayAfterTomorrow_icon: response[1].list[24].weather[0].icon
                 }));
             })
 

@@ -13,8 +13,10 @@
 .content div {
     padding: 5px;
 }
-.content img{
+
+.content img {
     justify-content: center;
+    object-fit: contain;
 }
 
 .content .today__container {
@@ -28,23 +30,35 @@
 .today {
     padding: 0 50px;
 }
-.next__days{
+
+.next__days {
     display: flex;
     justify-content: space-around;
     align-items: center;
 
 }
-.icon__container{
+
+.icon__container {
     display: flex;
     justify-content: center;
 }
-.align-items{
+
+.align-items {
     display: flex;
     flex-direction: column;
 }
-.later__today{
+
+.later__today {
     display: flex;
     justify-content: space-around;
-   
+
     width: 100%;
 }
+
+/* .today__back {
+    width: 100%;
+    text-align: center;
+    background: url("../img/sky-landscape-nature-clouds-wallpaper-preview.jpg")no-repeat;
+    background-position: center;
+    background-size: cover;
+} */
