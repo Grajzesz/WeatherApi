@@ -5,7 +5,7 @@ const Form = props => {
     // let po = valiue.toUpperCase()
     return (
         <div className="formularz">
-            <form onSubmit = {props.submit}>
+            <form className="forms" onSubmit = {props.submit}>
                 <input
                     type="text"
                     value={props.value}

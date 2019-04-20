@@ -72,7 +72,7 @@ const Result = props => {
     } = props.weather;
     console.log(icon);
 
-var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
+    var miasto = city.charAt(0, 1).toUpperCase() + city.slice(1);
     function bckgChange() {
         let bckg;
         if (icon === '01d') {
@@ -143,35 +143,36 @@ var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
             <div className="content">
                 <div className="today__container">
                     <div className="today__back" style={sectionStyle}>
-                    <div className="text__container">
-                        <div>
-                            <h3>Wyszukiwanie dla miasta {miasto}</h3>
-                        </div>
-                        <div>Na dzień: {date}</div>
-                        <div>
-                            temperatura: {temp} &#176;C od {temp_min} &#176;C do{' '}
-                            {temp_max} &#176;C
-                        </div>
-                        <div>{desc}</div>
-                        <div>Wschód słońca: {sunriseTime}</div>
-                        <div>Zachód słońca: {sunsetTime}</div>
-                        <div>
-                            Wiatr: {wind} m/s{' '}
-                            <i
-                                className="fas fa-location-arrow"
-                                style={{
-                                    transform: `rotate(${windDeg - 223}deg)`
-                                }}
-                            />
-                        </div>
-                        <div>Ciśnienie: {pressure} hPa</div>
+                        <div className="text__container">
+                            <div>
+                                <h3>Wyszukiwanie dla miasta {miasto}</h3>
+                            </div>
+                            <div>Na dzień: {date}</div>
+                            <div>
+                                temperatura: {temp} &#176;C od {temp_min}{' '}
+                                &#176;C do {temp_max} &#176;C
+                            </div>
+                            <div>{desc}</div>
+                            <div>Wschód słońca: {sunriseTime}</div>
+                            <div>Zachód słońca: {sunsetTime}</div>
+                            <div>
+                                Wiatr: {wind} m/s{' '}
+                                <i
+                                    className="fas fa-location-arrow"
+                                    style={{
+                                        transform: `rotate(${windDeg -
+                                            223}deg)`,
+                                        textShadow: '0px 0px 10px #000000'
+                                    }}
+                                />
+                            </div>
+                            <div>Ciśnienie: {pressure} hPa</div>
 
-                        <div className="icon__container">
-                            <img src={iconset} alt="djis" />
+                            <div className="icon__container">
+                                <img src={iconset} alt="djis" />
+                            </div>
                         </div>
                     </div>
-
-</div>
 
                     <div className="later__today">
                         <div className="later__today-hours1 align-items">
@@ -214,7 +215,7 @@ var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
 
                 {/* tomorrow */}
                 <div className="next__days">
-                    <div className="tomorrow">
+                    <div className="tomorrow align-items">
                         <div>Na dzień: {tomorrow_date}</div>
                         <div>temperatura: {tomorrow_temp} &#176;C</div>
 
@@ -234,7 +235,7 @@ var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
                         </div>
                     </div>
                     {/* afterTomorrow */}
-                    <div className="tomorrow">
+                    <div className="tomorrow align-items">
                         <div>Na dzień: {afterTomorrow_date}</div>
                         <div>temperatura: {afterTomorrow_temp} &#176;C</div>
 
@@ -254,7 +255,7 @@ var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
                         </div>
                     </div>
                     {/* dayAfterTomorrow */}
-                    <div className="tomorrow">
+                    <div className="tomorrow align-items">
                         <div>Na dzień: {dayAfterTomorrow_date}</div>
                         <div>temperatura: {dayAfterTomorrow_temp} &#176;C</div>
 
