@@ -5,7 +5,7 @@ import Result from './Result';
 const ApiKey = '3f5adde1534ce63dfb72e3180a717319';
 class App extends Component {
     state = {
-        desc:"",
+        desc: '',
         value: '',
         date: '',
         city: '',
@@ -13,23 +13,23 @@ class App extends Component {
         sunset: '',
         temp: '',
         temp1: '',
-        time:'',
-temp2: '',
-temp3: '',
-temp4: '',
-temp5: '',
-temp6: '',
-temp7: '',
+        time: '',
+        temp2: '',
+        temp3: '',
+        temp4: '',
+        temp5: '',
+        temp6: '',
+        temp7: '',
         pressure: '',
         wind: '',
         icon: '',
         icon1: '',
-icon2: '',
-icon3: '',
-icon4: '',
-icon5: '',
-icon6: '',
-icon7: '',
+        icon2: '',
+        icon3: '',
+        icon4: '',
+        icon5: '',
+        icon6: '',
+        icon7: '',
 
         err: false,
         // tomorrow
@@ -82,9 +82,33 @@ icon7: '',
         }&APPID=${ApiKey}&lang=pl&units=metric`;
 
         Promise.all([
-            fetch(Api).then(response => response.json()),
-            fetch(ApiForecast).then(response => response.json())
+            fetch(Api).then(response => {
+
+                if (response.ok) {
+                    return response
+
+                }
+                throw Error('lipa');
+            }).then(response => response.json()),
+            fetch(ApiForecast).then(response => {
+
+                if (response.ok) {
+                    return response
+
+                }
+                throw Error('lipa');
+            }).then(response => response.json())
         ])
+        // .then(response => {
+
+        //             if (response.ok) {
+        //                 return response
+
+        //             }
+        //             throw Error('lipa');
+        //         })
+        //     .then(response => response.json())
+        //     .then(data => {
             .then(response => {
                 console.log(response);
                 if (response.ok) {
@@ -146,16 +170,20 @@ icon7: '',
                     dayAfterTomorrow_date: response[1].list[24].dt_txt,
                     dayAfterTomorrow_windDeg: response[1].list[24].wind.deg,
                     dayAfterTomorrow_temp: response[1].list[24].main.temp,
-                    dayAfterTomorrow_pressure:(response[1].list[24].main.pressure),
-
+                    dayAfterTomorrow_pressure:response[1].list[24].main.pressure,
                     dayAfterTomorrow_wind: response[1].list[24].wind.speed,
                     dayAfterTomorrow_icon: response[1].list[24].weather[0].icon
                 }));
             })
 
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(
+                err => console.log(err),
+                this.setState(prevState => ({
+
+                    err: true,
+                    city: prevState.value
+                }))
+            );
     };
 
     // fetch(Api)
@@ -191,13 +219,6 @@ icon7: '',
     //         temp_min: data.list[0].main.temp_min
     //     }));
     // })
-    // .catch(
-    //     err => console.log(err),
-    //     this.setState(prevState => ({
-    //         err: true,
-    //         city: prevState.value
-    //     }))
-    // );
 
     render() {
         return (

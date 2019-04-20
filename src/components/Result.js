@@ -1,6 +1,20 @@
 import React from 'react';
-import Background__brokenClouds from '../img/sky-landscape-nature-clouds-wallpaper-preview.jpg';
-import Background__sun from '../img/KFHJzV.jpg';
+import Background__sun from '../img/no-clouds.jpg';
+import Background__fewClouds from '../img/few-clouds.jpg';
+import Background__scatteredClouds from '../img/broken-clouds.jpg';
+import Background__brokenClouds from '../img/rain-clouds.jpg';
+import Background__rainClouds from '../img/rain.jpg';
+import Background__stormClouds from '../img/storm.jpg';
+import Background__mistClouds from '../img/fog.jpg';
+import Background__snowClouds from '../img/snow.jpg';
+import Background__nightClear from '../img/night-no-clouds.jpg';
+import Background__nightFew from '../img/night-few-clouds.jpg';
+import Background__nightScattered from '../img/night-broken-clouds.jpg';
+import Background__nightRain from '../img/night-rain.jpg';
+import Background__nightStorm from '../img/night-storm.jpg';
+import Background__nightSnow from '../img/night-snow.jpg';
+import Background__nightMist from '../img/night-fog.jpg';
+
 const Result = props => {
     const {
         err,
@@ -56,28 +70,52 @@ const Result = props => {
         dayAfterTomorrow_windDeg,
         dayAfterTomorrow_icon
     } = props.weather;
- console.log(icon);
+    console.log(icon);
 
-function bckgChange(){
-    let bckg
-    if(icon === "01d"){
-        bckg=Background__sun
-    }else if(icon === "04d"){
-        bckg=Background__brokenClouds
+    function bckgChange() {
+        let bckg;
+        if (icon === '01d') {
+            bckg = Background__sun;
+        } else if (icon === '02d') {
+            bckg = Background__fewClouds;
+        } else if (icon === '03d') {
+            bckg = Background__scatteredClouds;
+        } else if (icon === '04d') {
+            bckg = Background__brokenClouds;
+        } else if (icon === '09d') {
+            bckg = Background__rainClouds;
+        } else if (icon === '10d' || '11d') {
+            bckg = Background__stormClouds;
+        } else if (icon === '13d') {
+            bckg = Background__snowClouds;
+        } else if (icon === '50d') {
+            bckg = Background__mistClouds;
+        } else if (icon === '01n') {
+            bckg = Background__nightClear;
+        } else if (icon === '02n') {
+            bckg = Background__nightFew;
+        } else if (icon === '03n' || '04n') {
+            bckg = Background__nightScattered;
+        } else if (icon === '09n' || '10n') {
+            bckg = Background__nightRain;
+        } else if (icon === '11n') {
+            bckg = Background__nightStorm;
+        } else if (icon === '13n') {
+            bckg = Background__nightSnow;
+        } else if (icon === '50n') {
+            bckg = Background__nightMist;
+        }
+        return bckg;
     }
-    return bckg
-}
 
     var sectionStyle = {
-      width: "100%",
-      height: "100%",
-      backgroundImage: `url(${bckgChange()})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+        width: '100%',
+        height: '100%',
+        backgroundImage: `url(${bckgChange()})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
 
-      textAlign: "center"
-
-
+        textAlign: 'center'
     };
 
     function hoursSet(n) {
@@ -101,30 +139,33 @@ function bckgChange(){
         content = (
             <div className="content">
                 <div className="today__container">
-                <div className="today__back" style={ sectionStyle }>
-                    <div>
-                        <h3>Wyszukiwanie dla miasta {city}</h3>
-                    </div>
-                    <div>Na dzień: {date}</div>
-                    <div>
-                        temperatura: {temp} &#176;C od {temp_min} &#176;C do{' '}
-                        {temp_max} &#176;C
-                    </div>
-                    <div>{desc}</div>
-                    <div>Wschód słońca: {sunriseTime}</div>
-                    <div>Zachód słońca: {sunsetTime}</div>
-                    <div>
-                        Wiatr: {wind} m/s{' '}
-                        <i
-                            className="fas fa-location-arrow"
-                            style={{ transform: `rotate(${windDeg - 223}deg)` }}
-                        />
-                    </div>
-                    <div>Ciśnienie: {pressure} hPa</div>
+                    <div className="today__back" style={sectionStyle}>
+                        <div>
+                            <h3>Wyszukiwanie dla miasta {city}</h3>
+                        </div>
+                        <div>Na dzień: {date}</div>
+                        <div>
+                            temperatura: {temp} &#176;C od {temp_min} &#176;C do{' '}
+                            {temp_max} &#176;C
+                        </div>
+                        <div>{desc}</div>
+                        <div>Wschód słońca: {sunriseTime}</div>
+                        <div>Zachód słońca: {sunsetTime}</div>
+                        <div>
+                            Wiatr: {wind} m/s{' '}
+                            <i
+                                className="fas fa-location-arrow"
+                                style={{
+                                    transform: `rotate(${windDeg - 223}deg)`
+                                }}
+                            />
+                        </div>
+                        <div>Ciśnienie: {pressure} hPa</div>
 
-                    <div className="icon__container">
-                        <img src={iconset} alt="djis" />
-                    </div></div>
+                        <div className="icon__container">
+                            <img src={iconset} alt="djis" />
+                        </div>
+                    </div>
                     <div className="later__today">
                         <div className="later__today-hours1 align-items">
                             <div className="hours">{hoursSet(3)}</div>&nbsp;
@@ -159,7 +200,7 @@ function bckgChange(){
                         <div className="later__today-hours7 align-items">
                             <div className="hours">{hoursSet(21)}</div>&nbsp;
                             {temp7} &#176;C
-                            <img src={icona(icon7)} alt="djis"/>
+                            <img src={icona(icon7)} alt="djis" />
                         </div>
                     </div>
                 </div>
@@ -232,14 +273,6 @@ function bckgChange(){
     return (
         <div className="result">
             {err ? `Nie mamy w bazie ${city}` : content}
-            {/* <div>Pogoda dla: {city}</div>
-            <div>Na dzień: {date}</div>
-            <div>temperatura: {temp}</div>
-
-            <div>Wschód słońca: {sunrise}</div>
-            <div>Zachód słońca: {sunset}</div>
-            <div>Wiatr: {wind}</div>
-            <div>Ciśnienie: {pressure}</div> */}
         </div>
     );
 };
