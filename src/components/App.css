@@ -1,8 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .formularz {
     margin: 0 auto;
     max-width: 1024px;
+
+
     display: flex;
+    width: 100%;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 5%;
 }
 
 .content {
@@ -11,7 +24,7 @@
 }
 
 .content div {
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 .content img {
@@ -46,6 +59,17 @@
 .align-items {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    border: 1px dashed black;
+    border-top: none;
+    border-right: none;
+    padding-top: 1%;
+}
+
+.align-items:last-of-type {
+    border-right: 1px dashed black;
 }
 
 .later__today {
@@ -55,10 +79,22 @@
     width: 100%;
 }
 
-/* .today__back {
+.today__back {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
-    text-align: center;
-    background: url("../img/sky-landscape-nature-clouds-wallpaper-preview.jpg")no-repeat;
-    background-position: center;
-    background-size: cover;
+    color: #fff;
+    font-size: 22px;
+
+
+}
+
+/* .text__container{
+
+height: 100%;
+
+
 } */

@@ -72,6 +72,7 @@ const Result = props => {
     } = props.weather;
     console.log(icon);
 
+var miasto = city.charAt(0,1).toUpperCase()+ city.slice(1)
     function bckgChange() {
         let bckg;
         if (icon === '01d') {
@@ -82,9 +83,9 @@ const Result = props => {
             bckg = Background__scatteredClouds;
         } else if (icon === '04d') {
             bckg = Background__brokenClouds;
-        } else if (icon === '09d') {
+        } else if (icon === '09d' || '10d') {
             bckg = Background__rainClouds;
-        } else if (icon === '10d' || '11d') {
+        } else if (icon === '11d') {
             bckg = Background__stormClouds;
         } else if (icon === '13d') {
             bckg = Background__snowClouds;
@@ -142,8 +143,9 @@ const Result = props => {
             <div className="content">
                 <div className="today__container">
                     <div className="today__back" style={sectionStyle}>
+                    <div className="text__container">
                         <div>
-                            <h3>Wyszukiwanie dla miasta {city}</h3>
+                            <h3>Wyszukiwanie dla miasta {miasto}</h3>
                         </div>
                         <div>Na dzień: {date}</div>
                         <div>
@@ -168,6 +170,9 @@ const Result = props => {
                             <img src={iconset} alt="djis" />
                         </div>
                     </div>
+
+</div>
+
                     <div className="later__today">
                         <div className="later__today-hours1 align-items">
                             <div className="hours">{hoursSet(3)}</div>&nbsp;

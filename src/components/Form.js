@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Form = props => {
+    // let valiue = document.querySelector("value")
+    // let po = valiue.toUpperCase()
     return (
         <div className="formularz">
             <form onSubmit = {props.submit}>
@@ -10,6 +12,7 @@ const Form = props => {
                     onChange={props.change}
                     placeholder={'Miasto'}
                 />
+
                 <button>Wyszukaj miasto</button>
             </form>
         </div>
