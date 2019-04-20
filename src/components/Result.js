@@ -96,7 +96,9 @@ const Result = props => {
             bckg = Background__nightFew;
         } else if (icon === '03n' || '04n') {
             bckg = Background__nightScattered;
-        } else if (icon === '09n' || '10n') {
+        } else if (icon === '09n') {
+            bckg = Background__nightRain;
+        } else if (icon === '10n') {
             bckg = Background__nightRain;
         } else if (icon === '11n') {
             bckg = Background__nightStorm;
